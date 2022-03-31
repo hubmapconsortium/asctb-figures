@@ -9,7 +9,8 @@ $ git clone https://github.com/hubmapconsortium/asctb-figures.git
 1. Run the docker command inside the asctb-figures directory to initiate the docker instance:
 ```
 $ cd asctb-figures
-$ docker run -d -p:7474:7474 -p 7687:7687 -v $(pwd):/var/lib/neo4j/import/ \
+$ mkdir uberon_cl
+$ docker run -d -p:7474:7474 -p 7687:7687 -v $(pwd)/uberon_cl:/var/lib/neo4j/import/ \
          --env-file ./src/resources/env.list \
          virtualflybrain/vfb-prod:semwebtest
 ```
@@ -30,7 +31,8 @@ CALL ebi.spot.neo4j2owl.owl2Import('file://src/resources/uberon_cl_bm_relaxed_ad
 ## Neo4j Instance for the CCF graph
 1. The steps are similar to the above. The only difference is you need to change the port number in the tunnelling parameter.
 ```
-$ docker run -d -p:7475:7474 -p 7688:7687 -v $(pwd):/var/lib/neo4j/import/ \
+$ mkdir ccf_as_ct
+$ docker run -d -p:7475:7474 -p 7688:7687 -v $(pwd)/ccf_as_ct:/var/lib/neo4j/import/ \
          --env-file ./src/resources/env.list \
          virtualflybrain/vfb-prod:semwebtest
 ```
